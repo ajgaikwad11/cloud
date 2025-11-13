@@ -1,0 +1,329 @@
+# 🌐 Web Application Migration – Complete Practical Solutions  
+This repository contains solutions for 10 migration-based applications using:  
+**Node.js, PHP, Django, Ruby Sinatra, Python, Flask, Java (Maven), PHP Form, Django Blog.**
+
+Each question includes:
+- Windows setup  
+- Linux setup  
+- Commands  
+- Sample code  
+- Folder structure  
+
+---
+
+# 📘 **QUESTION 1 — Node.js Application**
+
+## 📁 Folder Structure
+docker_app_lab1/
+├── index.js
+├── package.json
+└── node_modules/
+
+r
+Copy code
+
+## 🪟 Windows Commands
+```bash
+mkdir C:\docker_app_lab1
+cd C:\docker_app_lab1
+npm init -y
+npm install express
+node index.js
+🧾 Code — index.js
+javascript
+Copy code
+const express = require("express");
+const app = express();
+
+app.get("/", (req, res) => {
+  res.send("Hello from Node.js App!");
+});
+
+app.listen(3000, () => console.log("Running at http://localhost:3000"));
+🐧 Linux Commands
+bash
+Copy code
+sudo apt update
+sudo apt install nodejs npm -y
+cd /home/student/docker_app_lab1
+npm install
+node index.js
+📘 QUESTION 2 — PHP Application
+📁 Folder Structure
+pgsql
+Copy code
+php_app_lab2/
+  └── index.php
+🪟 Windows Commands
+bash
+Copy code
+mkdir C:\php_app_lab2
+cd C:\php_app_lab2
+php -S localhost:8000
+🧾 Code — index.php
+php
+Copy code
+<?php
+echo "Hello from PHP Application!";
+?>
+🐧 Linux Commands
+bash
+Copy code
+sudo apt install php -y
+cd /home/student/php_app_lab2
+php -S 0.0.0.0:8000
+📘 QUESTION 3 — Django Application
+📁 Folder Structure
+arduino
+Copy code
+python_lab3/
+  └── mysite/
+       ├── manage.py
+       ├── mysite/
+       └── home/
+🪟 Windows Commands
+bash
+Copy code
+mkdir C:\python_lab3
+cd C:\python_lab3
+python -m venv venv
+venv\Scripts\activate
+pip install django
+django-admin startproject mysite
+cd mysite
+python manage.py startapp home
+🧾 Code — home/views.py
+python
+Copy code
+from django.http import HttpResponse
+
+def index(request):
+    return HttpResponse("Hello from Django App!")
+🧾 Code — mysite/urls.py
+python
+Copy code
+from django.contrib import admin
+from django.urls import path
+from home.views import index
+
+urlpatterns = [
+    path('', index),
+    path('admin/', admin.site.urls),
+]
+🐧 Linux Commands
+bash
+Copy code
+sudo apt install python3 python3-pip -y
+pip3 install django
+cd /home/student/python_lab3/mysite
+python3 manage.py runserver 0.0.0.0:8000
+📘 QUESTION 4 — Ruby Sinatra Application
+📁 Folder Structure
+Copy code
+ruby_lab5/
+  └── app.rb
+🪟 Windows Commands
+bash
+Copy code
+gem install sinatra
+ruby app.rb -o 0.0.0.0
+🧾 Code — app.rb
+ruby
+Copy code
+require 'sinatra'
+
+get '/' do
+  "Hello from Ruby Sinatra App!"
+end
+🐧 Linux Commands
+bash
+Copy code
+sudo apt install ruby-full -y
+sudo gem install sinatra
+ruby app.rb -o 0.0.0.0
+📘 QUESTION 5 — Simple Python Application
+📁 Folder Structure
+Copy code
+docker_lab6/
+  └── app.py
+🪟 Windows Commands
+bash
+Copy code
+python app.py
+🧾 Code — app.py
+python
+Copy code
+print("Hello from simple Python App!")
+🐧 Linux Commands
+bash
+Copy code
+python3 app.py
+📘 QUESTION 6 — Python Flask To-Do App
+📁 Folder Structure
+Copy code
+python_lab13/
+  └── app.py
+🪟 Windows Commands
+bash
+Copy code
+pip install flask
+python app.py
+🧾 Code — app.py
+python
+Copy code
+from flask import Flask, request, render_template_string
+
+app = Flask(__name__)
+todos = []
+
+html = """
+<h2>Flask To-Do App</h2>
+<form method="POST">
+  <input name="task">
+  <button>Add Task</button>
+</form>
+<ul>
+{% for t in todos %}
+<li>{{ t }}</li>
+{% endfor %}
+</ul>
+"""
+
+@app.route("/", methods=["GET", "POST"])
+def home():
+    if request.method == "POST":
+        todos.append(request.form["task"])
+    return render_template_string(html, todos=todos)
+
+app.run()
+🐧 Linux Commands
+bash
+Copy code
+pip3 install flask
+cd /home/student/python_lab13
+python3 app.py
+📘 QUESTION 7 — Java Maven Application
+📁 Folder Structure
+css
+Copy code
+java_lab14/
+  └── myapp/
+       └── src/
+🪟 Windows Commands
+bash
+Copy code
+mvn archetype:generate ^
+ -DgroupId=com.example ^
+ -DartifactId=myapp ^
+ -DarchetypeArtifactId=maven-archetype-quickstart ^
+ -DinteractiveMode=false
+
+cd myapp
+mvn clean install
+mvn exec:java -Dexec.mainClass="com.example.App"
+🧾 Code — App.java
+java
+Copy code
+package com.example;
+
+public class App {
+    public static void main(String[] args) {
+        System.out.println("Hello from Java Maven App!");
+    }
+}
+🐧 Linux Commands
+bash
+Copy code
+sudo apt install default-jdk maven -y
+cd /home/student/java_lab14/myapp
+mvn clean install
+mvn exec:java -Dexec.mainClass="com.example.App"
+📘 QUESTION 8 — Ruby Microservice (Sinatra)
+📁 Folder Structure
+Copy code
+ruby_lab15/
+  └── service.rb
+🪟 Windows Commands
+bash
+Copy code
+gem install sinatra
+ruby service.rb -o 0.0.0.0
+🧾 Code — service.rb
+ruby
+Copy code
+require 'sinatra'
+
+get '/ping' do
+  "pong"
+end
+🐧 Linux Commands
+bash
+Copy code
+sudo apt install ruby-full
+sudo gem install sinatra
+ruby service.rb -o 0.0.0.0
+📘 QUESTION 9 — PHP Form Submission App
+📁 Folder Structure
+pgsql
+Copy code
+php_lab17/
+  └── index.php
+🪟 Windows Commands
+bash
+Copy code
+php -S localhost:8000
+🧾 Code — index.php
+php
+Copy code
+<form method="POST">
+  <input name="name" placeholder="Enter your name">
+  <button>Submit</button>
+</form>
+
+<?php
+if($_POST){
+  echo "Hello, " . htmlspecialchars($_POST['name']);
+}
+?>
+🐧 Linux Commands
+bash
+Copy code
+sudo apt install php
+cd /home/student/php_lab17
+php -S 0.0.0.0:8000
+📘 QUESTION 10 — Django Blog/Notes App
+📁 Folder Structure
+Copy code
+python_lab18/
+  └── blog/
+       └── notes/
+🪟 Windows Commands
+bash
+Copy code
+pip install django
+django-admin startproject blog
+cd blog
+python manage.py startapp notes
+🧾 Code — notes/views.py
+python
+Copy code
+from django.http import HttpResponse
+def home(request):
+    return HttpResponse("Simple Django Notes App Running!")
+🧾 Code — blog/urls.py
+python
+Copy code
+from django.contrib import admin
+from django.urls import path
+from notes.views import home
+
+urlpatterns = [
+    path('', home),
+    path('admin/', admin.site.urls),
+]
+🐧 Linux Commands
+bash
+Copy code
+pip3 install django
+cd /home/student/python_lab18/blog
+python3 manage.py runserver 0.0.0.0:8000
